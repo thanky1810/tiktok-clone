@@ -2,16 +2,33 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faCircleXmark, faEarthAsia, faEllipsisVertical, faKeyboard, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import Button from '~/Components/Button';
 import images from '~/assets/images'
 import styles from './Header.module.scss'
 import { Wrapper as PopperWrapper } from '~/Components/Popper'
+import Menu from '~/Components/Popper/Menu'
 
 import AccountItem from '~/Components/AccountItem'
 
 const cx = classNames.bind(styles)
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'FeedBack and Help',
+        to: '/feedback'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'KeyBoard shortcuts'
+    }
+];
 
 function Header() {
 
@@ -28,8 +45,8 @@ function Header() {
             <div className={cx('inner')}>
                 <img src={images.logo} alt='Tiktok'></img>
                 <Tippy
-                    interactive
-                    visible={searchResult.length > 0}
+                    interactive={searchResult.length > 0}
+                    visible={false}
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
@@ -60,7 +77,13 @@ function Header() {
                     <Button primary>
                         Log in
                     </Button>
-
+                    <Menu
+                        items={MENU_ITEMS}
+                    >
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
