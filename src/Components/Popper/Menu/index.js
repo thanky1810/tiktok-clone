@@ -11,9 +11,9 @@ import styles from './Menu.module.scss';
 
 const cx = classNames.bind(styles)
 
-const defaulFn = () => { };
+const defaultFn = () => { };
 
-function Menu({ children, items = [], onChange = defaulFn }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
 
     const [history, setHistory] = useState([{ data: items }])
     const current = history[history.length - 1]
@@ -36,6 +36,7 @@ function Menu({ children, items = [], onChange = defaulFn }) {
     return (
         <Tippy
             interactive
+            hideOnClick={hideOnClick}
             delay={[0, 700]}
             offset={[12, 8]}
             placement='bottom-end'
