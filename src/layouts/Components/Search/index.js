@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper as PopperWrapper } from '~/Components/Popper';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SearchIcon } from '~/Components/Icons';
+import { SearchIcon } from '~/components/Icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 
-import * as searchServices from '~/apiServices/searchServices';
-import AccountItem from '~/Components/AccountItem';
+import * as searchServices from '~/services/searchServices';
+import AccountItem from '~/components/AccountItem';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/Hooks';
@@ -65,7 +65,7 @@ function Search() {
 
 
     return (
-       <div>
+        <div>
             <HeadlessTippy
                 interactive
                 visible={searchResult.length > 0 && showResult}
@@ -97,12 +97,12 @@ function Search() {
                     )}
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                     <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()} >
-    
+
                         <SearchIcon />
                     </button>
                 </div>
             </HeadlessTippy>
-       </div>
+        </div>
     );
 }
 
