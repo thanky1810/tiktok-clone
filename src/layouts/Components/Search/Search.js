@@ -59,7 +59,6 @@ function Search() {
             setSearchValue(searchValue);
         }
     };
-
     return (
         <div>
             <HeadlessTippy

@@ -11,16 +11,22 @@ import AccountPreview from './AccountPreview';
 
 const cx = classNames.bind(styles)
 
-const renderPreview = (props) => {
-    return (
-        <div tabIndex='-1' {...props}>
-            <PopperWrapper>
-                <AccountPreview />
-            </PopperWrapper>
-        </div>
-    )
-}
-function AccountItem() {
+
+function AccountItem({ data }) {
+
+
+    const renderPreview = (props) => {
+        return (
+            <div tabIndex='-1' {...props}>
+                <PopperWrapper>
+                    <AccountPreview data={data} />
+                </PopperWrapper>
+            </div>
+        )
+    }
+
+    console.log()
+
     return (
         <div>
             <Tippy
@@ -33,14 +39,14 @@ function AccountItem() {
                 <div className={cx('account-item')}>
                     <img
                         className={cx('avatar')}
-                        src='https://i0.wp.com/spellmana.com/wp-content/uploads/2024/07/roronoa-zoro-deck-guide.webp?fit=768%2C429&amp;ssl=1' alt=''>
+                        src={data.avatar} alt={data.full_name}>
                     </img>
                     <div className={cx('item-info')}>
                         <p className={cx('nickname')}>
-                            <strong>thanvanky</strong>
+                            <strong>{data.nickname}</strong>
                             <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
                         </p>
-                        <p className={cx('name')}>Than Van ky</p>
+                        <p className={cx('name')}>{data.full_name}</p>
                     </div>
 
                 </div>

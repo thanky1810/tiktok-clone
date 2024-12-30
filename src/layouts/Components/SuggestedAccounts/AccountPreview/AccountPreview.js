@@ -7,25 +7,26 @@ import Button from "~/components/Button";
 
 const cx = classNames.bind(styles)
 
-function AccountPreview() {
+function AccountPreview({ data }) {
     return (
+
         <div className={cx('wrapper')}>
             <div className={cx('header')}>
-                <img className={cx('avatar')} src='https://i0.wp.com/spellmana.com/wp-content/uploads/2024/07/roronoa-zoro-deck-guide.webp?fit=768%2C429&amp;ssl=1' alt='' />
+                <img className={cx('avatar')} src={data.avatar} alt={data.full_name} />
                 <div>
                     <Button className={cx('follow-btn')} primary>Follow</Button>
                 </div>
             </div>
             <div className={cx('body')}>
                 <p className={cx('nickname')}>
-                    <strong>thanvanky</strong>
+                    <strong>{data.nickname}</strong>
                     <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
                 </p>
-                <p className={cx('name')}>Than Van ky</p>
+                <p className={cx('name')}>{data.full_name}</p>
                 <p className={cx('analytics')}>
-                    <strong className={cx('value')}>8.2M </strong>
+                    <strong className={cx('value')}>{data.followers_count} </strong>
                     <span className={cx('label')}>Follower</span>
-                    <strong className={cx('value')}>8.2M </strong>
+                    <strong className={cx('value')}>{data.likes_count} </strong>
                     <span className={cx('label')}>Likes</span>
                 </p>
             </div>
